@@ -307,7 +307,7 @@
   "projects": [
     {
       "packageName": "@honyaku/web-ui",
-      "projectFolder": "web-ui"
+      "projectFolder": "apps/web-ui"
     },
     // {
     //   /**
