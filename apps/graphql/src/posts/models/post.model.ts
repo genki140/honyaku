@@ -8,3 +8,8 @@ export class Post {
   content: string;
   published: boolean;
 }
+
+@ObjectType()
+export class PostMessage {
+  message: string;
+}

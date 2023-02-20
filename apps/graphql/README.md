@@ -12,3 +12,8 @@ rushx dev
 http://localhost:3000/graphql
 にアクセス
 
+
+## フェデレーションについて
+
+https://docs.nestjs.com/graphql/migration-guide#federation
+

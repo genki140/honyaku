@@ -32,7 +32,10 @@
     "@nestjs/graphql": "~10.2.0",
     "@nestjs/apollo": "~10.2.0",
     "graphql": "~16.6.0",
-    "apollo-server-express": "~3.11.1"
+    "apollo-server-express": "~3.11.1",
+    "graphql-ws": "~5.11.3",
+    "graphql-redis-subscriptions": "~2.6.0",
+    "graphql-subscriptions": "~2.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

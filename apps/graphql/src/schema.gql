@@ -9,10 +9,19 @@ type Post {
   published: Boolean!
 }
 
+type PostMessage {
+  message: String!
+}
+
 type Query {
   posts: [Post!]!
 }
 
 type Mutation {
   createPost(title: String!, content: String!): Post!
+  sendMessage(message: String!): PostMessage!
+}
+
+type Subscription {
+  receiveMessage: PostMessage!
 }
