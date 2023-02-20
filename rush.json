@@ -309,6 +309,10 @@
       "packageName": "@honyaku/web-ui",
       "projectFolder": "apps/web-ui"
     },
+    {
+      "packageName": "@honyaku/graphql",
+      "projectFolder": "apps/graphql"
+    }
     // {
     //   /**
     //    * The NPM package name of the project (must match package.json)
