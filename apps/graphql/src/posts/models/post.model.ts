@@ -11,5 +11,6 @@ export class Post {
 
 @ObjectType()
 export class PostMessage {
+  roomId: number;
   message: string;
 }

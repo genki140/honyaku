@@ -10,6 +10,7 @@ type Post {
 }
 
 type PostMessage {
+  roomId: Float!
   message: String!
 }
 
@@ -19,9 +20,9 @@ type Query {
 
 type Mutation {
   createPost(title: String!, content: String!): Post!
-  sendMessage(message: String!): PostMessage!
+  sendMessage(roomId: Float!, message: String!): PostMessage!
 }
 
 type Subscription {
-  receiveMessage: PostMessage!
+  receiveMessage(roomId: Float!): PostMessage!
 }

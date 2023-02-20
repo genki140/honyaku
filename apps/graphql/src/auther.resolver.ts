@@ -1,4 +1,4 @@
-import { UnauthorizedException } from '@nestjs/common';
+// import { UnauthorizedException } from '@nestjs/common';
 import { Args, Mutation, Resolver, Subscription } from '@nestjs/graphql';
 // import { PrismaService } from 'src/prisma.service';
 // import { RedisPubSub } from 'graphql-redis-subscriptions';
@@ -13,20 +13,25 @@ export class AuthorResolver {
   }
 
   @Mutation(() => PostMessage)
-  async sendMessage(@Args('message') message: string) {
-    const value: PostMessage = { message: '送信：' + message };
-    console.debug(value);
+  async sendMessage(
+    @Args('roomId') roomId: number,
+    @Args('message') message: string,
+  ) {
+    // 権限のないroomであれば例外を投げれる。Guardもたぶんできる。
+    // throw new UnauthorizedException();
+
+    const value: PostMessage = { roomId: roomId, message: '送信：' + message };
     this.pubSub.publish('postMessage', value);
     return value;
   }
 
   @Subscription(() => PostMessage, {
     resolve: (value) => value, // これは必ず必要らしい
-    //filter // ここにフィルターが書けるらしいので、roomIDを入れとけば何とかなる？
+    filter: (payload, variables) => payload.roomId === variables.roomId, // 自分の部屋の情報だけsubscript
   })
-  receiveMessage() {
-
-    // 認証は例外も投げれる。Guardもたぶんできる
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  receiveMessage(@Args('roomId') roomId: number) {
+    // 権限のないroomであれば例外を投げれる。Guardもたぶんできる。
     // throw new UnauthorizedException();
 
     return this.pubSub.asyncIterator('postMessage');
